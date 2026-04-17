@@ -12,11 +12,12 @@ con = sqlite3.connect('cell-count.db')
 # cursor for the db connection, allowing us to execute commands
 cur = con.cursor()
 
-# TODO: remove
-cur.execute("DROP TABLE cells;") # nuking the db for clean data
+# Optionally remove. for local testing 
+# cur.execute("DROP TABLE cells;") 
 
 # execute the db table creation. Good thing about sqlite3 is that specifying datatypes is optional, 
 # so for regular SQL commands, it'd be best practice to specify each. 
+# TODO:: change this into relational databases
 cur.execute("CREATE TABLE IF NOT EXISTS cells(project, subject, condition, age, sex, treatment, response, sample, sample_type, time_from_treatment_start, b_cell, cd8_t_cell, cd4_t_cell, nk_cell, monocyte);")
 
 # initialize each row in the data.
@@ -27,15 +28,13 @@ with open('cell-count.csv', newline='') as f:
     next(reader) # skip first element as it's the header
     for row in reader:
         data.append(row)
-
-
-cur.executemany("INSERT INTO cells(project, subject, condition, age, sex, treatment, response, sample, sample_type, time_from_treatment_start, b_cell, cd8_t_cell, cd4_t_cell, nk_cell, monocyte) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", data)
+    cur.executemany("INSERT INTO cells(project, subject, condition, age, sex, treatment, response, sample, sample_type, time_from_treatment_start, b_cell, cd8_t_cell, cd4_t_cell, nk_cell, monocyte) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", data)
 
 # Query and data insertion testing, can optionally remove this for performance benchmarks
 cur.execute("SELECT * FROM cells;")
 res = cur.fetchall()
 if res is not None: 
-    with open("output_test.txt", 'w') as f:
+    with open("test_1.txt", 'w') as f:
         for row in res:
             n_row = re.findall(r"'([^']*)'", str(row))
             n_row = ",".join(n_row)
