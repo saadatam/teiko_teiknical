@@ -67,8 +67,8 @@ def part2_init():
 
     # insert into the freq table. 
     cur.executemany("INSERT INTO freq(sample, total_count, population, count, percentage) VALUES(?, ?, ?, ?, ?)", data)
-    # commit changes
+    # commit changes and close connection 
     con.commit()
-    # close connection. 
+    
     con.close()
     return data

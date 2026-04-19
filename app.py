@@ -5,7 +5,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from load_data import load_data
+from reload_data import load_data
 from part2_init_overview import part2_init
 from part3_stats import part3_stats
 from part4_subset import part4_subset
@@ -78,6 +78,9 @@ elif (page == "part 3: stats"):
     ax.set_xlabel("Immune Cell Populations - Response (R) vs. Non-response (NR)")
     st.pyplot(fig)
 
+    # report 
+    st.info("Report: The responders showed significant difference in relative frequencies with a larger population percentage spread. In cd8_t_cell and monocytes, the percentages were higher overall, and cd4 cells showed a spread with higher population percentages than non-responders.")
+
 elif (page == "part 4: subset"):
     res = part4_subset()
     # project, subject, condition, age, sex, treatment, response, sample, sample_type, time_from_treatment_start, b_cell, cd8_t_cell, cd4_t_cell, nk_cell, monocyte
@@ -99,6 +102,8 @@ elif (page == "part 4: subset"):
     df3 = pd.DataFrame(res[3], columns=["Sex", "Count"])
     st.subheader("Extension 3: Subjects that were males/females")
     st.dataframe(df3, width='stretch')
+
+    st.info("average number of B cells for responders at time=0 is 10206.15")
 
 
 
