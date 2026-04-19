@@ -23,9 +23,9 @@ Link to the development server port
 - Navbar on the left to access different parts' data analysis
 - Pt.2 contains a table of population frequency per sample
 - Pt.3 contains the stats calculation for cell frequency distribution. Report is included at the end of page. 
-- Pt.4 contains all the queries related to melanoma PBMC samples at baseline (time_from_treatment_start is 0) from patients treated with miraclib. At the bottom I included the final answer 
+- Pt.4 contains all the queries related to melanoma PBMC samples at baseline (time_from_treatment_start is 0) from patients treated with miraclib. At the bottom I included the final answer
 
 # Design Explanation
 - Schema: I use two tables : `cells` and `freq`. `Cells` is created in load data while `freq` is created in part 2's python file. They are related via the `sample` column which acts as their sample_id. 
-- Scalability : Currently, I re-initiate each table as they get accessed to avoid duplicate elements. If I were to scale this for larger projects, I would isolate the data computation and the UI display to avoid dynamic creation. 
-- 
+- Scalability : Currently, I re-initiate each table as their pages become rendered to avoid duplicate elements and non-synchronized rendering. If I were to scale this for larger projects of similar nature (precomputed data), I would isolate the data computation and the UI display to avoid dynamic creation. 
+- Design : I designed the app with respect to SQL queries and dynamically changing database values. I realize since the data is pre-computed and not changing, such a user database in client facing applications, the display can be statically rendered. The benefit of my approach is synchronized access becomes more accessible as data becomes uploaded. 
