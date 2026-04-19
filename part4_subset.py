@@ -37,7 +37,7 @@ def part4_subset():
     results.append(res_samples)
     results.append(res_sample_count)
     results.append(res_responders)
-    results.append(res_sex)  
+    results.append(res_sex) 
     results.append(res_average_mel_mals)  
 
     return results
