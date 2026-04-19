@@ -29,4 +29,4 @@ Link to the development server port
 - Scalability : Currently, I re-initiate each table as their pages become rendered to avoid duplicate elements and non-synchronized rendering. If I were to scale this for larger projects of similar nature (precomputed data), I would isolate the data computation and the UI display to avoid dynamic creation. 
 - Design : I designed the app with respect to SQL queries and dynamically changing database values. I realize since the data is pre-computed and not changing, such a user database in client facing applications, the display can be statically rendered. The benefit of my approach is synchronized access becomes more accessible as data becomes uploaded. I also include the env, pycache data in the `.gitignore` file as they are environment sensitive files
 
-Thank you to the Teiko team for this take-home assessment! I really appreciate the time and effort, and I would love the opportunity in meeting soon.
+Thank you to the Teiko team for this take-home assessment! I really appreciate the time and effort, and I would love the opportunity to meet again.
