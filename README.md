@@ -3,6 +3,7 @@
 - requirements.txt
 - private env file
 - python file 
+- Makefile : pipeline, downloads, automatically start up local dev server
 
 # Part. 1) Data Initialization 
 - 

@@ -12,8 +12,8 @@ con = sqlite3.connect('cell-count.db')
 # cursor for the db connection, allowing us to execute commands
 cur = con.cursor()
 
-# Optionally remove. for local testing 
-# cur.execute("DROP TABLE cells;") 
+# Clean up before every run
+cur.execute("DROP TABLE cells;") 
 
 # execute the db table creation. Good thing about sqlite3 is that specifying datatypes is optional, 
 # so for regular SQL commands, it'd be best practice to specify each. 
